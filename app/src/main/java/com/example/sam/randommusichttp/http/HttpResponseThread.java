@@ -63,14 +63,17 @@ public class HttpResponseThread extends Thread {
                 } else if (request.contains("/music/off")) {
                     singleton.stopRandomSound();
                     response = "music off";
-                } else if (request.contains("/tv/off")) {
+                } else if (request.contains("/htv/off")) {
                     singleton.stopRandomSound();
                     response = "tv off";
                 } else if (request.contains("/get")) {
-                    response = "Nhac=music,Tivi=tv";
+                    response = "Nhac=music,Tvt=tv,htv";
                 } else if (request.contains("/check")) {
                     response = "music="+singleton.getMusicstate()+";vtv="
                     +singleton.getVtvstate()+";htv="+singleton.getHtvstate();
+                } else if (request.contains("/vtv/off")) {
+                    singleton.stopRandomSound();
+                    response = "tv off";
                 }
             }
             os.print("HTTP/1.0 200" + "\r\n");
