@@ -67,7 +67,7 @@ public class HttpResponseThread extends Thread {
                     singleton.stopRandomSound();
                     response = "tv off";
                 } else if (request.contains("/get")) {
-                    response = "Nhac=music,Tvt=tv,Htv=htv";
+                    response = "Nhac=music,Tvt=vtv,Htv=htv";
                 } else if (request.contains("/check")) {
                     response = "music="+singleton.getMusicstate()+";vtv="
                     +singleton.getVtvstate()+";htv="+singleton.getHtvstate();
