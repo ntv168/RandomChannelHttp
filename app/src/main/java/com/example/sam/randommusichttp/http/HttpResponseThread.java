@@ -49,17 +49,28 @@ public class HttpResponseThread extends Thread {
             String response = "";
             os = new PrintWriter(socket.getOutputStream(), true);
             if (request != null ) {
-                if (request.contains("/music")) {
+                if (request.contains("/music/on")) {
 
                     singleton.playRandomSound();
 
                     response = "Music on";
-                } else if (request.contains("/vtv")) {
-                    singleton.playVTVchanel();
+                } else if (request.contains("/vtv/on")) {
+                    singleton.playVTVchannel();
                     response = "VTV on";
-                } else if (request.contains("/htv")) {
-                    singleton.playHTVchanel();
+                } else if (request.contains("/htv/on")) {
+                    singleton.playHTVchannel();
                     response = "HTV on";
+                } else if (request.contains("/music/off")) {
+                    singleton.stopRandomSound();
+                    response = "music off";
+                } else if (request.contains("/tv/off")) {
+                    singleton.stopRandomSound();
+                    response = "tv off";
+                } else if (request.contains("/get")) {
+                    response = "Nhac=music,Tivi=tv";
+                } else if (request.contains("/check")) {
+                    response = "music="+singleton.getMusicstate()+";vtv="
+                    +singleton.getVtvstate()+";htv="+singleton.getHtvstate();
                 }
             }
             os.print("HTTP/1.0 200" + "\r\n");

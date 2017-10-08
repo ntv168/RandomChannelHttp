@@ -20,6 +20,7 @@ public class MusicSingleton {
     private static MediaPlayer mp;
     private static int randomInt;
     private static int sound;
+    private String vtvstate,musicstate,htvstate;
 
     public static MusicSingleton getInstance(Context context) {
         if (musicSingleton == null) {
@@ -55,24 +56,53 @@ public class MusicSingleton {
         sound = soundList.get(randomInt);
         mp = MediaPlayer.create(mContext, sound);
         mp.start();
+        musicstate = "on";
     }
 
-    public void playVTVchanel() {
+    public void playVTVchannel() {
         stopRandomSound();
         sound = R.raw.vtv;
         mp = MediaPlayer.create(mContext, sound);
         mp.start();
+        vtvstate = "on";
     }
 
-    public void playHTVchanel() {
+    public void playHTVchannel() {
         stopRandomSound();
         sound = R.raw.htv;
         mp = MediaPlayer.create(mContext, sound);
         mp.start();
+        htvstate = "on";
     }
 
     public void stopRandomSound() {
         mp.stop();
+        htvstate = "off";
+        vtvstate = "off";
+        musicstate = "off";
     }
 
+    public String getVtvstate() {
+        return vtvstate;
+    }
+
+    public void setVtvstate(String vtvstate) {
+        this.vtvstate = vtvstate;
+    }
+
+    public String getMusicstate() {
+        return musicstate;
+    }
+
+    public void setMusicstate(String musicstate) {
+        this.musicstate = musicstate;
+    }
+
+    public String getHtvstate() {
+        return htvstate;
+    }
+
+    public void setHtvstate(String htvstate) {
+        this.htvstate = htvstate;
+    }
 }
